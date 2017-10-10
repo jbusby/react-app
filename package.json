@@ -2,8 +2,10 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jbusby.github.io/react-app",
   "dependencies": {
     "bootstrap": "^3",
+    "gh-pages": "^1.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
     "node-sass-chokidar": "^0.0.3",
@@ -16,11 +18,13 @@
     "react-scripts": "1.0.14"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "precommit": "lint-staged",
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
-    "build": "yarn run build-css && react-scripts build",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build": "yarn build-css && react-scripts build",
+    "watch-css": "yarn build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "build-css": "node-sass-chokidar src/ -o src/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
